@@ -1,0 +1,10 @@
+net\tournamentslite\command\TournamentCommand.class
+net\tournamentslite\tournament\Tournament.class
+net\tournamentslite\teleport\TeleportAnimator.class
+net\tournamentslite\util\ItemBuilder.class
+net\tournamentslite\TournamentsLitePlugin.class
+net\tournamentslite\gui\TournamentGui.class
+net\tournamentslite\gui\TournamentGuiHolder.class
+net\tournamentslite\util\MessageUtil.class
+net\tournamentslite\gui\GuiListener.class
+net\tournamentslite\tournament\TournamentManager.class

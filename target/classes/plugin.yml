@@ -1,0 +1,22 @@
+name: TournamentsLite
+version: '1.0.0'
+main: net.tournamentslite.TournamentsLitePlugin
+api-version: '1.21'
+folia-supported: true
+author: MrVoidx
+description: Lightweight Folia-native tournament sign-up plugin with GUI. Source: https://github.com/MRVOIDX/TournamentLite
+website: https://github.com/MRVOIDX/TournamentLite
+
+commands:
+  tl:
+    description: TournamentsLite main command
+    usage: /tl [help|list|reload|create|remove|tpsigned|signup|kick|ban|unban|setwinner|clearwinners]
+    aliases: [tournamentslite, tournaments]
+
+permissions:
+  tournamentslite.use:
+    description: Allows opening the tournaments GUI and signing up
+    default: true
+  tournamentslite.admin:
+    description: Allows managing tournaments (create/remove/tpsigned/reload/etc.)
+    default: op

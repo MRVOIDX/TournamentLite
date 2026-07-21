@@ -1,0 +1,29 @@
+# ================================================================
+#  This tournament's own file - edit it directly, no command needed.
+#  The plugin re-reads the "leaderboard" section from disk automatically
+#  every few seconds, so changes show up in the GUI on their own.
+# ================================================================
+
+display-name: "CartPvP"
+slot: 13
+material: MINECART
+
+# Which day this tournament recurs on (purely for the GUI's "Every X" /
+# countdown display). One of: MONDAY, TUESDAY, WEDNESDAY, THURSDAY,
+# FRIDAY, SATURDAY, SUNDAY. Leave blank ("") for no fixed schedule.
+weekday: MONDAY
+
+# Item icon shown privately to signed-up players during the pre-teleport
+# animation when you run /tl tpsigned cartpvp. Leave blank to reuse
+# "material" above instead.
+animation-item: TNT
+
+# Type the winners in by hand after each event. Any of these can be a
+# player name, a team name, or anything else you want displayed - it's
+# just text, not tied to an actual online player.
+leaderboard:
+  1: ""
+  2: ""
+  3: ""
+  4: ""
+  5: ""
