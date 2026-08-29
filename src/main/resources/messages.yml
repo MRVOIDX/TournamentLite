@@ -1,0 +1,150 @@
+# ================================================================
+#  TournamentsLite - messages.yml
+# ================================================================
+# Everything the player SEES lives here. Edit freely, then
+# "/tl reload". Colors use standard '&' codes (e.g. &b, &6, &l).
+#
+# Placeholders available inside "item-lore":
+#   {display_name}   tournament display name
+#   {schedule}         "Every Wednesday" style line, or {no-schedule-text}
+#                       if no weekday is set for this tournament
+#   {status}            "Signed Up" / "Not Signed Up"
+#   {time_remaining}     countdown to the next occurrence of the
+#                        tournament's weekday, or {happening-today-text}
+#                        if today IS that weekday, or {no-schedule-text}
+#                        if no weekday is set
+#   {top_1} .. {top_5}   pre-formatted leaderboard lines, using
+#                        "leaderboard-line" below - these are names YOU
+#                        type in by hand (in the tournament's own file,
+#                        or with /tl setwinner), never computed automatically
+#
+# Placeholders inside "leaderboard-line":
+#   {rank} {color} {player}
+# ================================================================
+
+prefix: "&8[&bTournaments&8] &r"
+
+gui:
+  title: "&8Tournaments"
+  no-permission: "{prefix}&cYou don't have permission to do that."
+  unknown-tournament: "{prefix}&cNo tournament named '&f{input}&c' exists."
+
+item:
+  display-name: "&b&l{display_name}"
+  # Each line below becomes one lore line, top to bottom, in order.
+  # Leave a line as "" for a blank spacer line.
+  lore:
+    - ""
+    - "&f{schedule}"
+    - ""
+    - "&bTIME REMAINING"
+    - "&7{time_remaining}"
+    - ""
+    - "{top_1}"
+    - "{top_2}"
+    - "{top_3}"
+    - "{top_4}"
+    - "{top_5}"
+    - ""
+    - "&e{status}"
+    - "&7Click to sign up / leave"
+
+  no-schedule-text: "No fixed schedule"
+  happening-today-text: "&aHappening today!"
+  schedule-format: "Every {day}"
+
+  status-signed: "&aSigned Up"
+  status-not-signed: "&cNot Signed Up"
+
+  leaderboard-line: "&f#{rank}: {color}{player}"
+  leaderboard-empty-name: "N/A"
+
+# ================================================================
+#  Confirmation dialog text
+# ================================================================
+# Text for the native Minecraft "Dialog" popup shown when a player
+# clicks a tournament (only while "gui.confirmation-dialog.enabled" is
+# true in config.yml - see that file for the on/off switch and icon
+# settings). "signup" is used when the player isn't signed up yet
+# (clicking will sign them up); "leave" is used when they already are
+# (clicking will remove them). Feel free to use emoji directly in any
+# of these lines - they render fine on the Dialog screen.
+#
+# Placeholders available in every field below:
+#   {display_name}   the tournament's display name
+#   {player}          the clicking player's name
+# ================================================================
+dialog:
+  signup:
+    title: "&a&l✅ Sign Up"
+    # Shown on any button elsewhere that opens this dialog (e.g. a future
+    # "dialog list" menu). Purely cosmetic if nothing references it yet.
+    external-title: "Sign Up"
+    body:
+      - "&fYou're about to sign up for &b&l{display_name}&f."
+      - "&7Press confirm below to lock in your spot."
+    confirm-label: "&a✅ Sign Up"
+    confirm-tooltip: "&7Click to confirm your sign-up"
+    cancel-label: "&c❌ Cancel"
+    cancel-tooltip: "&7Click to back out, nothing will change"
+
+  leave:
+    title: "&c&l🚪 Leave Tournament"
+    external-title: "Leave Tournament"
+    body:
+      - "&fYou're about to leave &b&l{display_name}&f."
+      - "&7You can always sign back up later."
+    confirm-label: "&c✅ Leave"
+    confirm-tooltip: "&7Click to confirm you want to leave"
+    cancel-label: "&7❌ Stay Signed Up"
+    cancel-tooltip: "&7Click to back out, you'll stay signed up"
+
+actions:
+  signed-up: "{prefix}&aYou signed up for &f{display_name}&a!"
+  left: "{prefix}&eYou left &f{display_name}&e."
+  no-permission-signup: "{prefix}&cYou don't have permission to sign up."
+  banned: "{prefix}&cYou are banned from signing up for tournaments."
+
+commands:
+  reloaded: "{prefix}&aConfiguration reloaded."
+  created: "{prefix}&aCreated tournament '&f{id}&a' in slot &f{slot}&a."
+  create-slot-taken: "{prefix}&cSlot &f{slot}&c is already used by '&f{other}&c'."
+  create-usage: "{prefix}&cUsage: /tl create <id> <slot> <material> <weekday|none>"
+  remove-usage: "{prefix}&cUsage: /tl remove <tournament>"
+  removed: "{prefix}&aRemoved tournament '&f{id}&a'."
+  list-header: "{prefix}&bTournaments:"
+  list-entry: "&7 - &f{id} &7(slot {slot}, {weekday}, {signed_count} signed up)"
+  tpsigned-usage: "{prefix}&cUsage: /tl tpsigned <tournament>"
+  tpsigned-none-signed: "{prefix}&eNobody is signed up for &f{display_name}&e."
+  tpsigned-done: "{prefix}&aTeleporting &f{count}&a signed player(s) to you."
+  signup-usage: "{prefix}&cUsage: /tl signup <player> <tournament>"
+  signup-done: "{prefix}&aSigned &f{player}&a up for &f{id}&a."
+  signup-already: "{prefix}&c{player}&c is already signed up for &f{id}&c."
+  signup-banned: "{prefix}&c{player}&c is banned from tournaments."
+  kick-usage: "{prefix}&cUsage: /tl kick <player> <tournament>"
+  kick-done: "{prefix}&aRemoved &f{player}&a from &f{id}&a."
+  kick-not-signed: "{prefix}&c{player}&c wasn't signed up for &f{id}&c."
+  ban-usage: "{prefix}&cUsage: /tl ban <player>"
+  ban-done: "{prefix}&aBanned &f{player}&a from all tournaments and removed their sign-ups."
+  ban-already: "{prefix}&c{player}&c is already banned."
+  unban-usage: "{prefix}&cUsage: /tl unban <player>"
+  unban-done: "{prefix}&aUnbanned &f{player}&a from tournaments."
+  unban-not-banned: "{prefix}&c{player}&c isn't banned."
+  setwinner-usage: "{prefix}&cUsage: /tl setwinner <tournament> <rank 1-5> <name>"
+  setwinner-bad-rank: "{prefix}&cRank must be between 1 and 5."
+  setwinner-done: "{prefix}&aSet rank &f#{rank}&a for &f{id}&a to &f{name}&a."
+  clearwinners-usage: "{prefix}&cUsage: /tl clearwinners <tournament>"
+  clearwinners-done: "{prefix}&aCleared the leaderboard for &f{id}&a."
+  help:
+    - "{prefix}&b/tl &7- open the tournaments menu"
+    - "&b/tl list &7- list all tournaments"
+    - "&b/tl tpsigned <name> &7- teleport signed players to you"
+    - "&b/tl setwinner <name> <rank 1-5> <name> &7- set a leaderboard entry"
+    - "&b/tl clearwinners <name> &7- wipe a tournament's leaderboard"
+    - "&b/tl signup <player> <tournament> &7- force sign a player up"
+    - "&b/tl kick <player> <tournament> &7- remove a player's sign-up"
+    - "&b/tl ban <player> &7- ban a player from all tournaments"
+    - "&b/tl unban <player> &7- lift a tournament ban"
+    - "&b/tl create <id> <slot> <material> <weekday|none> &7- create a tournament"
+    - "&b/tl remove <id> &7- remove a tournament"
+    - "&b/tl reload &7- reload config.yml, messages.yml, and tournament files"
