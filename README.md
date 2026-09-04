@@ -90,7 +90,7 @@ Output jar: `target/TournamentsLite-1.0.0.jar`. Check `pom.xml`'s
 `<paper.version>` property first and bump it if it doesn't match your
 server's exact build.
 
-## Editing a tournament (the main thing you asked for)
+## Editing a tournament
 
 Open `plugins/TournamentsLite/tournaments/uhc.yml` (or cartpvp.yml /
 clanwars.yml) directly:
